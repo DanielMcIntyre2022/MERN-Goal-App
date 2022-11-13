@@ -9,4 +9,6 @@ db();
 const app = express();
 app.use(cors());
 
+app.use('/api/goals', require('./routes/goalRoutes'));
+
 app.listen(port, console.log(`listening on port ${port}!`));
