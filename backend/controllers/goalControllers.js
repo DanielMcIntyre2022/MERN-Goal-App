@@ -4,6 +4,7 @@ const Goal = require('../models/goalModels');
 
 const getGoals = asyncHandler(async(req, res) => {
     const goals = await Goal.find({
+        user: req.user.id
     })   
     res.json({goals})
 });
@@ -11,7 +12,8 @@ const getGoals = asyncHandler(async(req, res) => {
 const addGoals = asyncHandler(async(req, res) => {
 
     const goal = await Goal.create({
-        text: req.body.text
+        text: req.body.text, 
+        user: req.user.id
     })
 
     if(!req.body.text) {
